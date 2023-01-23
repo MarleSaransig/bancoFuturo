@@ -1,0 +1,282 @@
+{
+	"info": {
+		"_postman_id": "fba801c2-e16d-40bc-8a7f-e9b7cad33a27",
+		"name": "Banco Futuro",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4038826"
+	},
+	"item": [
+		{
+			"name": "Crear actualizar persona",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":  \"Karina Guerrero\",\r\n    \"edad\": 44,\r\n    \"identificacion\": \"1714123072\",\r\n    \"genero\": \"FEMENINO\",\r\n    \"direccion\": \"La Campiña\",\r\n    \"telefono\": \"025430578\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8095/bancoFuturo/crearActualizarPersona",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8095",
+					"path": [
+						"bancoFuturo",
+						"crearActualizarPersona"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear actualizar cliente",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"clave\":  \"5553333\",\r\n    \"estado\":  \"ACTIVO\",\r\n    \"persona\": {\r\n        \"nombre\":  \"Mariana Sanchez\",\r\n        \"edad\": 44,\r\n        \"identificacion\": \"1714123073\",\r\n        \"genero\": \"FEMENINO\",\r\n        \"direccion\": \"La Campiña Pusuqui Pomasqui OE3N \",\r\n        \"telefono\": \"025430578\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8095/bancoFuturo/crearActualizarCliente",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8095",
+					"path": [
+						"bancoFuturo",
+						"crearActualizarCliente"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear actualizar cuenta cliente",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"numeroCuenta\": \"2278478\",\r\n    \"tipoCuenta\": \"CORRIENTE\",\r\n    \"estado\": \"ACTIVO\",\r\n    \"saldoInicial\": 1805.20,\r\n    \"cliente\": {\r\n        \"persona\": {\r\n            \"identificacion\": \"1714123073\"\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8095/bancoFuturo/crearActualizarCuenta",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8095",
+					"path": [
+						"bancoFuturo",
+						"crearActualizarCuenta"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear actualizar movimiento cuenta cliente",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idMovimiento\": null,\r\n    \"fecha\":\"2023-01-22T16:20:00\",\r\n    \"tipoMovimiento\":\"CREDITO\",\r\n    \"valor\": 15.20,\r\n    \"saldo\": 0.00,\r\n    \"cuenta\": {\r\n        \"numeroCuenta\": \"85784587\",\r\n        \"cliente\": {\r\n            \"persona\": {\r\n                \"identificacion\": \"1714123073\"\r\n            }\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8095/bancoFuturo/crearActualizarMovimientoCuenta",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8095",
+					"path": [
+						"bancoFuturo",
+						"crearActualizarMovimientoCuenta"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar persona por identificacion",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8095/bancoFuturo/consultarPersonaPorIdentificacion/1712203072",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8095",
+					"path": [
+						"bancoFuturo",
+						"consultarPersonaPorIdentificacion",
+						"1712203072"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener reporte cliente",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"identificacion\": \"1714123073\",\r\n\"fechaDesde\": \"2023-01-22T15:58:00\",\r\n\"fechaHasta\": \"2023-01-22T16:20:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8095/bancoFuturo/obtenerEstadoCuenta",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8095",
+					"path": [
+						"bancoFuturo",
+						"obtenerEstadoCuenta"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar cliente por identificacion",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8095/bancoFuturo/consultarClientePorIdentificacion/1714123078",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8095",
+					"path": [
+						"bancoFuturo",
+						"consultarClientePorIdentificacion",
+						"1714123078"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar cliente con cuentas por identificacion",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8095/bancoFuturo/consultarCuentasClientePorIdentificacion/1714123078",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8095",
+					"path": [
+						"bancoFuturo",
+						"consultarCuentasClientePorIdentificacion",
+						"1714123078"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar persona por identificación",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8095/bancoFuturo/eliminarPersonaPorIdentificacion/1714123078",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8095",
+					"path": [
+						"bancoFuturo",
+						"eliminarPersonaPorIdentificacion",
+						"1714123078"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar persona por identificación Copy",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8095/bancoFuturo/eliminarClientePorIdentificacion/1714123078",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8095",
+					"path": [
+						"bancoFuturo",
+						"eliminarClientePorIdentificacion",
+						"1714123078"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar cuenta por identificación y numero cuenta",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8095/bancoFuturo/eliminarCuentaPorClienteNumeroCuenta/1714123073/2278478",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8095",
+					"path": [
+						"bancoFuturo",
+						"eliminarCuentaPorClienteNumeroCuenta",
+						"1714123073",
+						"2278478"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
