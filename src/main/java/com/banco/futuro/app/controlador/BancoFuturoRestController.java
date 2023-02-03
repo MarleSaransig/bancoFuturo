@@ -509,13 +509,26 @@ public class BancoFuturoRestController {
 			if (movimientoActual == null) {
 				esCreacion = Boolean.TRUE;
 				if (cuenta.getSaldoInicial() != null && listaMovimiento.isEmpty()) {
-					valorCredito = movimiento.getValor();
 					tipoMovimiento = TipoMovimientoEnum.CREDITO.getNombre();
-					valorFinal = valorFinal.add(valorCredito);
 					valorFinal = valorFinal.add(cuenta.getSaldoInicial());
 					saldoCalculado = saldoCalculado.add(valorFinal);
-				} 
+					movimientoActual = new Movimiento(movimiento.getFecha(), tipoMovimiento,
+							valorFinal, saldoCalculado, cuenta);
+					movimientoUpdated = movimientoService.guardar(movimientoActual);
+					valorFinal = BigDecimal.ZERO;
+					if (movimiento.getTipoMovimiento().equals(TipoMovimientoEnum.CREDITO)) {
+						valorCredito = movimiento.getValor();
+						tipoMovimiento = TipoMovimientoEnum.CREDITO.getNombre();
+						valorFinal = valorFinal.add(valorCredito);
+					} else {
+						valorDebito = movimiento.getValor();
+						valorFinal = valorFinal.add(valorDebito.negate());
+						tipoMovimiento = TipoMovimientoEnum.DEBITO.getNombre();
+						valorDiarioDebito = valorDiarioDebito.add(valorDebito);
+					}
 
+				} 
+				saldoCalculado = saldoCalculado.add(valorFinal);
 				movimientoActual = new Movimiento(movimiento.getFecha(), movimiento.getTipoMovimiento().getNombre(),
 						valorFinal, saldoCalculado, cuenta);
 				movimientoActual.setValorAcumuladoRetiroDiario(valorDiarioDebito);

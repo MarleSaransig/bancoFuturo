@@ -1,6 +1,5 @@
 package com.banco.futuro.app.repositorio;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -25,7 +24,7 @@ public interface MovimientoRepositorio extends JpaRepository<Movimiento, Integer
 	Movimiento buscarMovimientoPorIdMovimientoPorCuenta(@Param("idMovimiento") Integer idMovimiento, @Param("cuenta") Cuenta cuenta);
 	
 	@Query("SELECT new com.banco.futuro.app.dto.EstadoCuentaDto(per.nombre, per.identificacion, "
-			+ "per.direccion,cue.numeroCuenta,mov.fecha, mov.saldo, mov.valor, cue.tipoCuenta,mov.tipoMovimiento) "
+			+ "per.direccion,cue.numeroCuenta,mov.fecha,  mov.valor,mov.saldo, cue.tipoCuenta,mov.tipoMovimiento) "
 			+ "FROM Cuenta cue JOIN cue.listaMovimiento mov JOIN cue.cliente cli "
 			+ "JOIN cli.persona per WHERE mov.cuenta in :listaCuenta "
 			+ "AND mov.fecha BETWEEN :fechaDesde AND :fechaHasta")
